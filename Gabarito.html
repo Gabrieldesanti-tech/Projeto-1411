@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Exemplo</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        header {
+            background: #f8f8f8;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://picsum.photos/1600/800') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero a {
+            background: #ff6600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .hero a:hover {
+            background: #e65c00;
+        }
+
+        /* Sessão extra para exemplo */
+        section {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header com navegação -->
+    <header>
+        <h2>MinhaMarca</h2>
+        <nav>
+            <a href="#beneficios">Benefícios</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section: foco principal da landing -->
+    <section class="hero">
+        <h1>Transforme sua ideia em realidade</h1>
+        <p>Descubra como nosso serviço pode ajudar você a alcançar seus objetivos de forma rápida e eficiente.</p>
+        <a href="#contato">Quero começar agora</a>
+    </section>
+
+    <!-- Exemplo de conteúdo subsequente -->
+    <section id="beneficios">
+        <h2>Por que escolher nosso serviço?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel orci vel elit cursus tincidunt.</p>
+    </section>
+
+</body>
+
+</html>

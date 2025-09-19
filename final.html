@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 1411 - Coleção Monocromática</title>
+  <style>
+    :root {
+      --bg-color: #0b0b0b;
+      --surface-color: #151515;
+      --surface-alt: #1f1f1f;
+      --text-primary: #f5f5f5;
+      --text-secondary: #c7c7c7;
+      --accent: #f0f0f0;
+      --accent-earth: #bdbdbd;
+      --border-color: #2b2b2b;
+      --focus-ring: #f7f7f7;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .top-nav {
+      background: var(--surface-color);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 15;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .search {
+      background: var(--surface-alt);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      min-width: 220px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .search::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .search:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+      background: var(--surface-color);
+    }
+
+    .icon-button,
+    .primary-button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 0.5rem 1.25rem;
+      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+    }
+
+    .icon-button {
+      background: var(--surface-alt);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .icon-button:hover,
+    .icon-button:focus-visible {
+      background: #232323;
+      border-color: var(--accent-earth);
+    }
+
+    .primary-button {
+      background: var(--accent);
+      color: #0a0a0a;
+      border: 1px solid var(--accent-earth);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .primary-button:hover,
+    .primary-button:focus-visible {
+      background: #e6e6e6;
+      color: #050505;
+      border-color: #d0d0d0;
+    }
+
+    main {
+      padding: 3rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      background: linear-gradient(135deg, rgba(32, 32, 32, 0.8), rgba(18, 18, 18, 0.95));
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .hero-copy p {
+      color: var(--text-secondary);
+      max-width: 460px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .secondary-button {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent-earth);
+      padding: 0.5rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+    }
+
+    .secondary-button:hover,
+    .secondary-button:focus-visible {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .hero-figure {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 280px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-figure::after {
+      content: "Coleção 1411";
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      background: rgba(240, 240, 240, 0.08);
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(6px);
+      border-radius: 999px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      background: var(--surface-color);
+      border-radius: 18px;
+      padding: 1.75rem;
+      border: 1px solid var(--border-color);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .filter-group label {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+      color: var(--text-secondary);
+    }
+
+    .filter-group select,
+    .filter-group button {
+      width: 100%;
+    }
+
+    .select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-alt);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      transition: border 0.2s ease, background 0.2s ease;
+    }
+
+    .select:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+      border-color: var(--accent-earth);
+      background: #232323;
+    }
+
+    .filter-tags {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--surface-alt);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .tag.is-active {
+      background: var(--accent);
+      color: #080808;
+      border-color: var(--accent-earth);
+    }
+
+    .tag:focus-visible,
+    .tag:hover {
+      background: #e2e2e2;
+      color: #050505;
+      border-color: #d4d4d4;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--surface-color);
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-4px);
+      border-color: #3a3a3a;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .price span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .product-description {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+
+    .ghost-button {
+      flex: 1;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent-earth);
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+    }
+
+    .ghost-button:hover,
+    .ghost-button:focus-visible {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(240, 240, 240, 0.08);
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 2.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-columns {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-columns h4 {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-columns ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-columns a:hover,
+    .footer-columns a:focus-visible {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 2rem;
+      }
+
+      main {
+        padding: 2.5rem 1.25rem 3rem;
+      }
+
+      .footer-columns {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="brand"> <span>1411</span></div>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#colecao">Coleção</a>
+      <a href="#novidades">Novidades</a>
+      <a href="#acessorios">Acessórios</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="actions">
+      <input class="search" type="search" name="q" placeholder="Buscar produtos" aria-label="Buscar produtos" />
+      <button class="icon-button" type="button" aria-label="Abrir favoritos">❤</button>
+      <button class="primary-button" type="button">Minha sacola</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="colecao">
+      <div class="hero-copy">
+        <p class="pill">Nova temporada </p>
+        <h1>Estética urbana seja minimalista e vista 1411</h1>
+        <p>
+          Descubra peças em algodão orgânico, cortes minimalistas e acabamentos sofisticados.
+          A coleção 1411 celebra texturas e volumes na mesma paleta.
+        </p>
+        <div class="hero-actions">
+          <button class="primary-button" type="button">Comprar agora</button>
+          <button class="secondary-button" type="button">Ver lookbook</button>
+        </div>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" alt="Modelo usando peças monocromáticas" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="filters" aria-label="Filtros de produtos">
+      <div class="filter-group">
+        <label for="ordenar">Ordenar por</label>
+        <select id="ordenar" class="select">
+          <option>Mais recentes</option>
+          <option>Mais vendidos</option>
+          <option>Menor preço</option>
+          <option>Maior preço</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="tamanho">Tamanho</label>
+        <select id="tamanho" class="select">
+          <option>Todos</option>
+          <option>PP</option>
+          <option>P</option>
+          <option>M</option>
+          <option>G</option>
+          <option>GG</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Categoria</label>
+        <div class="filter-tags">
+          <button class="tag is-active" type="button">Todos</button>
+          <button class="tag" type="button">Casual</button>
+          <button class="tag" type="button">Trabalho</button>
+          <button class="tag" type="button">Acessórios</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>Disponibilidade</label>
+        <div class="filter-tags">
+          <button class="tag" type="button">Em estoque</button>
+          <button class="tag" type="button">Pré-venda</button>
+          <button class="tag" type="button">Exclusivo online</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-grid" id="novidades" aria-label="Lista de produtos">
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" alt="Casaco estruturado grafite" loading="lazy">
+        <div class="product-meta">
+          <h2 class="product-title">Casaco estruturado grafite</h2>
+          <span class="pill">Novo</span>
+        </div>
+        <p class="product-description">
+          Alfaiataria casual com ombros suaves e forro respirável. Ideal para camadas discretas.
+        </p>
+        <div class="price">R$ 349<span>3x de R$ 116,33</span></div>
+        <div class="card-actions">
+          <button class="primary-button" type="button">Adicionar</button>
+          <button class="ghost-button" type="button">Detalhes</button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Vestido midi carvão" loading="lazy">
+        <div class="product-meta">
+          <h2 class="product-title">Vestido midi carvão</h2>
+          <span class="pill">Coleção cápsula</span>
+        </div>
+        <p class="product-description">
+          Malha premium com caimento fluído e recortes estratégicos. Sofisticação sem esforço.
+        </p>
+        <div class="price">R$ 289<span>6x de R$ 48,17</span></div>
+        <div class="card-actions">
+          <button class="primary-button" type="button">Adicionar</button>
+          <button class="ghost-button" type="button">Detalhes</button>
+        </div>
+      </article>
+
+      <article class="product-card" id="acessorios">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="Bolsa tote grafite" loading="lazy">
+        <div class="product-meta">
+          <h2 class="product-title">Bolsa tote grafite</h2>
+          <span class="pill">Série limitada</span>
+        </div>
+        <p class="product-description">
+          Couro vegano texturizado com divisórias internas e acabamento metálico polido.
+        </p>
+        <div class="price">R$ 219<span>5x de R$ 43,80</span></div>
+        <div class="card-actions">
+          <button class="primary-button" type="button">Adicionar</button>
+          <button class="ghost-button" type="button">Detalhes</button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Calça reta chumbo" loading="lazy">
+        <div class="product-meta">
+          <h2 class="product-title">Calça reta chumbo</h2>
+          <span class="pill">Básico essencial</span>
+        </div>
+        <p class="product-description">
+          Modelagem reta com cintura média e tecido encorpado. Versátil para qualquer ocasião.
+        </p>
+        <div class="price">R$ 259<span>4x de R$ 64,75</span></div>
+        <div class="card-actions">
+          <button class="primary-button" type="button">Adicionar</button>
+          <button class="ghost-button" type="button">Detalhes</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contato">
+    <div class="footer-columns">
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li><a href="#">Central de ajuda</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Pedidos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Sobre a Loja 1411</a></li>
+          <li><a href="#">Sustentabilidade</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Comunidade</h4>
+        <ul>
+          <li><a href="#">Programa de fidelidade</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Lookbooks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@loja1411.com">contato@loja1411.com</a></li>
+          <li><a href="tel:+5511999999999">+55 11 99999-9999</a></li>
+          <li>Seg a sex das 9h às 18h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Loja 1411. Todos os direitos reservados.</p>
+      <div class="filter-tags">
+        <a class="tag" href="#">Política de privacidade</a>
+        <a class="tag" href="#">Termos de uso</a>
+        <a class="tag" href="#">Preferências de cookies</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
